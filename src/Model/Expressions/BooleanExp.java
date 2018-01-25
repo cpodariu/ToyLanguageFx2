@@ -43,6 +43,10 @@ public class BooleanExp extends Exp {
 		switch (sign) {
 			case "==":
 				result = left - right;
+				if (result == 0)
+					result = 1;
+				else
+					result = 0;
 				break;
 			case ">":
 				if (left > right)

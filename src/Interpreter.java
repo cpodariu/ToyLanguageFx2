@@ -5,6 +5,7 @@ import Model.Expressions.ConstExp;
 import Model.Expressions.HeapReadExp;
 import Model.Expressions.VarExp;
 import Model.Statements.BaeStatements.*;
+import Model.Statements.ExamStatements.SwitchStmt;
 import Model.Statements.FileStatements.CloseRFileStmt;
 import Model.Statements.FileStatements.OpenRFileStmt;
 import Model.Statements.FileStatements.ReadFileStmt;
@@ -149,6 +150,21 @@ public class Interpreter{
 		st10.getStack().push(new HeapAllocStmt("a", new ConstExp(22)));
 		st10.getStack().push(new AssignStmt("v", new ConstExp(10)));
 		
+		PrgState st11 = new PrgState();
+		Repository r11 = new Repository(st11, log);
+		Controller c11 = new Controller(r11);
+		st11.getStack().push(new PrintStmt(new ConstExp(300)));
+		st11.getStack().push(new SwitchStmt(new ArithExp(new VarExp("a"), new ConstExp(10), '*'),
+											new ArithExp(new VarExp("b"), new VarExp("c"), '*'),
+											new CompStmt(new PrintStmt(new VarExp("a")), new PrintStmt(new VarExp("b"))),
+											new ConstExp(10),
+											new CompStmt(new PrintStmt(new ConstExp(100)), new PrintStmt(new ConstExp(200))),
+											new PrintStmt(new ConstExp(300))
+											));
+		st11.getStack().push(new AssignStmt("c", new ConstExp(5)));
+		st11.getStack().push(new AssignStmt("b", new ConstExp(2)));
+		st11.getStack().push(new AssignStmt("a", new ConstExp(1)));
+		
 		MyDictionary<String, Command> commands = new MyDictionary<String, Command>();
 		commands.put("1", new RunExampleCommand("1", "Example 1", c1));
 		commands.put("0", new ExitCommand("0", "exit"));
@@ -161,6 +177,7 @@ public class Interpreter{
 		commands.put("8", new RunExampleCommand("8", "Example 8", c8));
 		commands.put("9", new RunExampleCommand("9", "Example 9", c9));
 		commands.put("10", new RunExampleCommand("10", "Example 10", c10));
+		commands.put("11", new RunExampleCommand("11", "Example 11", c11));
 		return commands;
 	}
 	
