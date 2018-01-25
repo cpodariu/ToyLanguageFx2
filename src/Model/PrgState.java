@@ -4,11 +4,9 @@ import Exceptions.ExpressionException;
 import Exceptions.FileException;
 import Exceptions.HeapException;
 import Model.Statements.BaeStatements.IStmt;
-import Utils.Interfaces.MyIHeap;
+import Utils.Interfaces.*;
+import Utils.MyBarrierTable;
 import Utils.MyFileReader;
-import Utils.Interfaces.MyIDictionary;
-import Utils.Interfaces.MyIList;
-import Utils.Interfaces.MyIStack;
 import Utils.MyHeap;
 import Utils.PrimitiveADT.MyDictionary;
 import Utils.PrimitiveADT.MyList;
@@ -20,6 +18,16 @@ public class PrgState {
     private MyIList<String> out;
     private MyIDictionary<Integer, MyFileReader> fileTable;
     private MyIHeap heap;
+	
+	public MyIBarrierTable getBarrierTable() {
+		return barrierTable;
+	}
+	
+	public void setBarrierTable(MyIBarrierTable barrierTable) {
+		this.barrierTable = barrierTable;
+	}
+	
+	private MyIBarrierTable barrierTable;
 	private int id = 1;
 
 	public int getId() {
@@ -37,35 +45,11 @@ public class PrgState {
         out = new MyList<String>();
         fileTable = new MyDictionary<Integer, MyFileReader>();
         heap = new MyHeap();
+        barrierTable = new MyBarrierTable();
         id = 1;
     }
-
-    public PrgState(MyIStack<IStmt> exeStack,MyIDictionary<String,Integer> symTable, MyIList<String> out )
-    {
-        this.exeStack = exeStack;
-        this.symTable = symTable;
-        this.out = out;
-    }
     
-    public PrgState(MyIStack<IStmt> exeStack,MyIDictionary<String,Integer> symTable, MyIList<String> out, MyIDictionary<Integer, MyFileReader>fileTable)
-    {
-        this.exeStack = exeStack;
-        this.symTable = symTable;
-        this.out = out;
-        this.fileTable = fileTable;
-    }
-
-
-	public PrgState(MyIStack<IStmt> exeStack,MyIDictionary<String,Integer> symTable, MyIList<String> out, MyIDictionary<Integer, MyFileReader>fileTable, MyIHeap heap)
-	{
-        this.exeStack = exeStack;
-        this.symTable = symTable;
-	    this.out = out;
-	    this.fileTable = fileTable;
-	    this.heap = heap;
-    }
-	
-	public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String,Integer> symTable, MyIList<String> out, MyIDictionary<Integer, MyFileReader>fileTable, MyIHeap heap, int id)
+	public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String,Integer> symTable, MyIList<String> out, MyIDictionary<Integer, MyFileReader>fileTable, MyIHeap heap, int id, MyIBarrierTable barrierTable)
 	{
 		this.exeStack = exeStack;
 		this.symTable = symTable;
@@ -73,6 +57,7 @@ public class PrgState {
 		this.fileTable = fileTable;
 		this.heap = heap;
 		this.id = id;
+		this.barrierTable = barrierTable;
 	}
 
     public MyIStack<IStmt> getStack()

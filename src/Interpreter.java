@@ -5,6 +5,8 @@ import Model.Expressions.ConstExp;
 import Model.Expressions.HeapReadExp;
 import Model.Expressions.VarExp;
 import Model.Statements.BaeStatements.*;
+import Model.Statements.ExamStatements.BarrierWaitStmt;
+import Model.Statements.ExamStatements.NewBarrierStmt;
 import Model.Statements.ExamStatements.SwitchStmt;
 import Model.Statements.FileStatements.CloseRFileStmt;
 import Model.Statements.FileStatements.OpenRFileStmt;
@@ -165,6 +167,23 @@ public class Interpreter{
 		st11.getStack().push(new AssignStmt("b", new ConstExp(2)));
 		st11.getStack().push(new AssignStmt("a", new ConstExp(1)));
 		
+		PrgState st12 = new PrgState();
+		Repository r12 = new Repository(st12, log);
+		Controller c12 = new Controller(r12);
+		st12.getStack().push(new PrintStmt(new HeapReadExp("v3")));
+		st12.getStack().push(new BarrierWaitStmt("cnt"));
+		st12.getStack().push(new ForkStmt(  new CompStmt(   new BarrierWaitStmt("cnt"),
+											new CompStmt(new HeapWriteStmt("v2", new ArithExp('*', new HeapReadExp("v2"), new ConstExp(10))),
+											new CompStmt(new HeapWriteStmt("v2", new ArithExp('*', new HeapReadExp("v2"), new ConstExp(10))),
+													new PrintStmt(new HeapReadExp("v2")))))));
+		st12.getStack().push(new ForkStmt(  new CompStmt(   new BarrierWaitStmt("cnt"),
+															new CompStmt(new HeapWriteStmt("v1", new ArithExp('*', new HeapReadExp("v1"), new ConstExp(10))),
+																	new PrintStmt(new HeapReadExp("v1"))))));
+		st12.getStack().push(new NewBarrierStmt("cnt", new HeapReadExp("v2")));
+		st12.getStack().push(new HeapAllocStmt("v3", new ConstExp(4)));
+		st12.getStack().push(new HeapAllocStmt("v2", new ConstExp(3)));
+		st12.getStack().push(new HeapAllocStmt("v1", new ConstExp(2)));
+		
 		MyDictionary<String, Command> commands = new MyDictionary<String, Command>();
 		commands.put("1", new RunExampleCommand("1", "Example 1", c1));
 		commands.put("0", new ExitCommand("0", "exit"));
@@ -178,6 +197,7 @@ public class Interpreter{
 		commands.put("9", new RunExampleCommand("9", "Example 9", c9));
 		commands.put("10", new RunExampleCommand("10", "Example 10", c10));
 		commands.put("11", new RunExampleCommand("11", "Example 11", c11));
+		commands.put("12", new RunExampleCommand("12", "Example 12", c12));
 		return commands;
 	}
 	

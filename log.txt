@@ -151126,3 +151126,5211 @@ Files:
 {}
 Heap:
 {}
+===Thread nr 1 ====
+
+Exe Stack:
+[b = 2, c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(100) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(100) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(100) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[(If a * 10 == b * c then ( Print(a); Print(b) ) else (If a * 10 == 10 then ( Print(100); Print(100) ) else Print(300))), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[( Print(a); Print(b) ), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(a), Print(b), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(b), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); HeapWrite(v1, read(v1) * 10) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); HeapWrite(v2, read(v2) * 10) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); HeapWrite(v1, read(v1) * 10) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); HeapWrite(v1, read(v1) * 10) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); HeapWrite(v2, read(v2) * 10) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[b = 2, c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[(If a * 10 == b * c then ( Print(a); Print(b) ) else (If a * 10 == 10 then ( Print(100); Print(200) ) else Print(300))), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[( Print(a); Print(b) ), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(a), Print(b), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v1, read(v1) * 10) )), Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v1)), fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); HeapWrite(v1, read(v1) * 10) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); HeapWrite(v2, read(v2) * 10) )), HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[HeapWrite(v2, read(v2) * 10), Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); HeapWrite(v2, read(v2) * 10) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v2)), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v1, read(v1) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), HeapWrite(v2, read(v2) * 10)]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[2, 30]
+Files:
+{}
+Heap:
+{1=2, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[HeapWrite(v1, read(v1) * 10), Print(read(v1))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4]
+Files:
+{}
+Heap:
+{1=20, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[Print(read(v1))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4]
+Files:
+{}
+Heap:
+{1=20, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[HeapWrite(v2, read(v2) * 10), Print(read(v2))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4]
+Files:
+{}
+Heap:
+{1=20, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[Print(read(v2))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 30]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v1, 2), new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v2, 3), new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2}
+===Thread nr 1 ====
+
+Exe Stack:
+[new(v3, 4), newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3}
+===Thread nr 1 ====
+
+Exe Stack:
+[newBarrier(cnt, read(v2)), fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )), fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[fork(( await(cnt); ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) ) )), await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[( await(cnt); ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[await(cnt), Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[( HeapWrite(v1, read(v1) * 10); Print(read(v1)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[await(cnt), ( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(read(v3))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[HeapWrite(v1, read(v1) * 10), Print(read(v1))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[( HeapWrite(v2, read(v2) * 10); ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) ) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[]
+Files:
+{}
+Heap:
+{1=2, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4]
+Files:
+{}
+Heap:
+{1=20, 2=3, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[Print(read(v1))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4]
+Files:
+{}
+Heap:
+{1=20, 2=3, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[HeapWrite(v2, read(v2) * 10), ( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4]
+Files:
+{}
+Heap:
+{1=20, 2=3, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[( HeapWrite(v2, read(v2) * 10); Print(read(v2)) )]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[HeapWrite(v2, read(v2) * 10), Print(read(v2))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=30, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=300, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=300, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[Print(read(v2))]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20]
+Files:
+{}
+Heap:
+{1=20, 2=300, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 300]
+Files:
+{}
+Heap:
+{1=20, 2=300, 3=4}
+===Thread nr 2 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 300]
+Files:
+{}
+Heap:
+{1=20, 2=300, 3=4}
+===Thread nr 3 ====
+
+Exe Stack:
+[]
+Sym Table:
+{cnt=1, v1=1, v2=2, v3=3}
+Out:
+[4, 20, 300]
+Files:
+{}
+Heap:
+{1=20, 2=300, 3=4}
+===Thread nr 1 ====
+
+Exe Stack:
+[b = 2, c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[(If a * 10 == b * c then ( Print(a); Print(b) ) else (If a * 10 == 10 then ( Print(100); Print(200) ) else Print(300))), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[( Print(a); Print(b) ), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(a), Print(b), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(b), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[b = 2, c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[c = 5, switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[switch(a * 10)
+(case (b * c) ( Print(a); Print(b) ))
+(case (10) ( Print(100); Print(200) ))
+(default Print(300));, Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[(If a * 10 == b * c then ( Print(a); Print(b) ) else (If a * 10 == 10 then ( Print(100); Print(200) ) else Print(300))), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[( Print(a); Print(b) ), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(a), Print(b), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(b), Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[Print(300)]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2]
+Files:
+{}
+Heap:
+{}
+===Thread nr 1 ====
+
+Exe Stack:
+[]
+Sym Table:
+{a=1, b=2, c=5}
+Out:
+[1, 2, 300]
+Files:
+{}
+Heap:
+{}

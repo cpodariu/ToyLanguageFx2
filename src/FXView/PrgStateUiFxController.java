@@ -2,9 +2,12 @@ package FXView;
 
 import Controller.Controller;
 import Model.PrgState;
+import Utils.Interfaces.MyIBarrierTable;
 import Utils.Interfaces.MyIDictionary;
+import Utils.MyBarrierTable;
 import Utils.MyFileReader;
 import Utils.MyHeap;
+import Utils.Triplet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,6 +45,9 @@ public class PrgStateUiFxController implements Initializable {
 	
 	public TableView symTableView;
 	private final ObservableList<Pair<String, String>> symTableItems = FXCollections.observableArrayList();
+	
+	public TableView barrierTableView;
+	private final ObservableList<Triplet> barrierTableItems = FXCollections.observableArrayList();
 	
 	private int prevIndex;
 	
@@ -168,6 +174,32 @@ public class PrgStateUiFxController implements Initializable {
 		symTableView.setItems(symTableItems);
 	}
 	
+	private void setBarrierTableView()
+	{
+		barrierTableView.setEditable(true);
+		barrierTableItems.clear();
+		MyBarrierTable table = (MyBarrierTable) programController.getRepository().getPrgList().get(0).getBarrierTable();
+		
+		for (Integer i : table.keySet())
+		{
+			barrierTableItems.add(new Triplet(i.toString(), table.get(i).getKey().toString(), table.get(i).getValue().toString()));
+		}
+		
+		TableColumn<String, String> oneColumn = new TableColumn<String, String>("Index");
+		oneColumn.setCellValueFactory(new PropertyValueFactory<>("one"));
+		
+		TableColumn<String, String> twoColumn = new TableColumn<String, String>("Value");
+		twoColumn.setCellValueFactory(new PropertyValueFactory<>("two"));
+
+		TableColumn<String, String> threeColumn = new TableColumn<String, String>("List");
+		threeColumn.setCellValueFactory(new PropertyValueFactory<>("three"));
+		
+		barrierTableView.getColumns().clear();
+		barrierTableView.getColumns().setAll(oneColumn, twoColumn, threeColumn);
+		
+		barrierTableView.setItems(barrierTableItems);
+	}
+	
 	private void setOutView()
 	{
 		outView.setEditable(true);
@@ -185,6 +217,7 @@ public class PrgStateUiFxController implements Initializable {
 		setExeStackView();
 		setOutView();
 		setSymTableView();
+		setBarrierTableView();
 	}
 	
 	public void setProgramController(Controller c)

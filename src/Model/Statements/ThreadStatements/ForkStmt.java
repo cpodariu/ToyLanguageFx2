@@ -5,16 +5,15 @@ import Exceptions.FileException;
 import Exceptions.HeapException;
 import Model.PrgState;
 import Model.Statements.BaeStatements.IStmt;
-import Utils.Interfaces.MyIDictionary;
-import Utils.Interfaces.MyIHeap;
-import Utils.Interfaces.MyIList;
-import Utils.Interfaces.MyIStack;
+import Utils.Interfaces.*;
 import Utils.MyFileReader;
 import Utils.PrimitiveADT.MyDictionary;
 import Utils.PrimitiveADT.MyStack;
 
 public class ForkStmt implements IStmt{
 	private IStmt statement;
+	
+	static int lastThreadId = 2;
 	
 	public ForkStmt(IStmt statement) {
 		this.statement = statement;
@@ -33,9 +32,12 @@ public class ForkStmt implements IStmt{
 		
 		MyIHeap newHeap = state.getHeap();
 		
-		int newId = state.getId() * 10;
+		int newId = lastThreadId;
+		lastThreadId++;
 		
-		return new PrgState(newExeStack, newSymTable, newOut, newFileTable, newHeap, newId);
+		MyIBarrierTable barrierTable = state.getBarrierTable();
+		
+		return new PrgState(newExeStack, newSymTable, newOut, newFileTable, newHeap, newId, barrierTable);
 	}
 	
 	@Override

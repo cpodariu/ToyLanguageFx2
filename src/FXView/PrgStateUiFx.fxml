@@ -62,7 +62,13 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="allStepButton" onAction="#allStepForAll" alignment="CENTER" mnemonicParsing="false" text="All Steps" />
+            <Button fx:id="allStepButton" alignment="CENTER" mnemonicParsing="false" onAction="#allStepForAll" text="All Steps" />
+         </children>
+      </VBox>
+      <VBox prefHeight="150.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Label text="Barrier Table:" />
+            <TableView fx:id="barrierTableView" prefHeight="130.0" prefWidth="200.0" />
          </children>
       </VBox>
    </children>
